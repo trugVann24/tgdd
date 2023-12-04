@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class product_import_slip extends Model
+class ProductImportSlip extends Model
 {
     use HasFactory;
 
