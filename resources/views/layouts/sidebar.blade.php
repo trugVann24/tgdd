@@ -38,7 +38,7 @@
                         </div>
                         <!-- Sub Menu Sidebar -->
                         <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
-                            <li
+                            {{-- <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
                                 <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-group mr-2'></i>
@@ -57,7 +57,7 @@
                                     <i class='bx bx-mail-send mr-2'></i>
                                     Thống kê thông tin
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     <li>
@@ -71,6 +71,13 @@
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
                                 <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-trending-up mr-2'></i>
+                                    Quản lý danh mục
+                                </a>
+                            </li>
+                            <li
+                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-shopping-bag mr-2'></i>
                                     Quản lý nhà cung cấp
                                 </a>
@@ -78,8 +85,29 @@
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
                                 <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-shopping-bag mr-2'></i>
+                                    Quản lý thương hiệu
+                                </a>
+                            </li>
+                            <li
+                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-trending-up mr-2'></i>
-                                    Quản lý danh mục
+                                    Quản lý hoá đơn nhập
+                                </a>
+                            </li>
+                            <li
+                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-shopping-bag mr-2'></i>
+                                    Quản lý hoá đơn xuất
+                                </a>
+                            </li>
+                            <li
+                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-trending-up mr-2'></i>
+                                    Quản lý đại lý phân phối
                                 </a>
                             </li>
                             <li
@@ -203,4 +231,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
