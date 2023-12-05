@@ -9,8 +9,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SupplilerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AgentStoreController;
 use App\Models\AgentStore;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
@@ -47,4 +47,4 @@ require __DIR__.'/auth.php';
     Route::resource('/suppliler',SupplilerController::class);
     Route::resource('/brand',BrandController::class);
     Route::resource('/product',ProductController::class);
-    Route::resource('/agentstore',AgentStore::class);
+    Route::resource('/agentstore',AgentStoreController::class);
