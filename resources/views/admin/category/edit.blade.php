@@ -1,5 +1,5 @@
 <x-app-layout>
-    {{ __('Sửa Category') }}
+    {{ __('Sửa Danh Mục') }}
     <div class="dark:bg-gray-900 p-4 rounded-md mt-2">
         <div class="w-80 mx-auto p-5 rounded-md">
             <form method="POST" action="{{ route('category.update', $category->id) }}">
@@ -7,7 +7,7 @@
                 @csrf
                 <!-- Name category -->
                 <div>
-                    <x-input-label for="name" :value="__('Tên category')" />
+                    <x-input-label for="name" :value="__('Tên Danh Mục')" />
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
                         value="{{ old('name', $category->name) }}" required autofocus />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />

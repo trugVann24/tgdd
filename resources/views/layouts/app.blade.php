@@ -41,7 +41,20 @@
         @endif
         @include('layouts.sidebar')
     </div>
-    
+
+    <script>
+        function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('image-preview');
+        preview.style.display = "block";
+        var reader = new FileReader();
+        reader.onload = function() {
+        preview.src = reader.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+
 </body>
 
 </html>
