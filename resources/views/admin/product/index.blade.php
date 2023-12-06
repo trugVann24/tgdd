@@ -1,17 +1,17 @@
 <x-app-layout>
     <div class="flex items-center justify-between border-b border-gray-700 pb-3">
         <div>
-            {{ __('Danh sách Category') }}
+            {{ __('Danh sách Sản Phẩm') }}
         </div>
         <div style="color: black">
-            <form action="{{ route('category.index') }}" method="GET">
+            <form action="{{ route('product.index') }}" method="GET">
                 <input type="text" name="q" placeholder="Search..." autocomplete="off">
                 <button type="submit">Tìm kiếm</button>
             </form>
         </div>
         <div>
-            <a href="{{ route('category.create') }}"
-                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Danh Mục</a>
+            <a href="{{ route('product.create') }}"
+                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Sản Phẩm</a>
         </div>
     </div>
     <div class="flex flex-col mt-2">
@@ -25,7 +25,23 @@
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">ID</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên
-                                    Danh Mục
+                                    Sản Phẩm
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Danh Mục
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Nhà Cung
+                                    Cấp
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Hình Ảnh
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Số Lượng Tồn Kho
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Mô Tả
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Trạng
@@ -37,15 +53,25 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($list as $key => $cate)
+                            @foreach ($list as $key => $pro)
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $cate->id }}</td>
+                                        {{ $pro->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $cate->name }}</td>
+                                        {{ $pro->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        @if ($cate->status == 1)
+                                        {{ $pro->category_id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $pro->suppliler }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        <img width="100" src="{{ asset('image/' . $pro->image) }}"></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $pro->quantity_instock }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $pro->description }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        @if ($pro->status == 1)
                                             Hiển Thị
                                         @else
                                             Không Hiển Thị
@@ -54,11 +80,11 @@
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('category.edit', $cate->id) }}" class="">
+                                            <a href="{{ route('product.edit', $pro->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('category.destroy', $cate->id) }}" method="POST"
+                                        <form action="{{ route('product.destroy', $pro->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')
