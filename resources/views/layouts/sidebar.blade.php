@@ -70,7 +70,7 @@
                         <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('category.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-trending-up mr-2'></i>
                                     Quản lý danh mục
                                 </a>
@@ -84,35 +84,35 @@
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{route('admin.brand.index')}}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-shopping-bag mr-2'></i>
                                     Quản lý thương hiệu
                                 </a>
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{route('admin.goodReceivedNote.index')}}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-trending-up mr-2'></i>
                                     Quản lý hoá đơn nhập
                                 </a>
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{route('admin.goodDeliveryNote.index')}}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-shopping-bag mr-2'></i>
                                     Quản lý hoá đơn xuất
                                 </a>
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('agentstore.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-trending-up mr-2'></i>
                                     Quản lý đại lý phân phối
                                 </a>
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('product.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-train mr-2'></i>
                                     Quản lý sản phẩm
                                 </a>

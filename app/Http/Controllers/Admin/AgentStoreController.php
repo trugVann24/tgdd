@@ -10,8 +10,8 @@ class AgentStoreController extends Controller
 
     public function index()
     {
-        $list = AgentStore::orderBy('id', 'ASC')->get();
-        return view('admin.agentstore.index', compact('list'));
+        $agentstore = AgentStore::whereNotIn('address', ['admin'])->get();
+        return view('admin.agentstore.index', compact('agentstore'));
     }
 
 
@@ -70,13 +70,13 @@ class AgentStoreController extends Controller
         $agentstore =  AgentStore::find($id);
         $agentstore->address = $data['address'];
         $agentstore->save();
-        return redirect()->route('agentstore.index')->with('message', 'sửa danh mục thành công');
+        return redirect()->route('admin.agentstore.index')->with('message', 'sửa danh mục thành công');
     }
 
 
     public function destroy(string $id)
     {
         AgentStore::find($id)->delete();
-        return redirect()->route('agentstore.index');
+        return redirect()->route('admin.agentstore.index');
     }
 }
