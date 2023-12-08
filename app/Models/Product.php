@@ -19,10 +19,10 @@ class Product extends Model
     ];
 
     public function category(){
-        return $this->belongsTo(Category::class,'category_id');
+        return $this->belongsTo(Category::class);
     }
-    public function supliler(){
-        return $this->belongsTo(Suppliler::class,'supplier_id');
+    public function supplier(){
+        return $this->belongsTo(Supplier::class);
         
     }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     {{ __('Thêm Sản Phẩm') }}
     <div class="mt-5 w-full mx-auto p-5 rounded-md border dark:border-gray-700">
-        <form method="POST" action="{{ route('product.store') }}"  enctype = "multipart/form-data">
+        <form method="POST" action="{{ route('product.store') }}" enctype = "multipart/form-data">
             @csrf
             <!-- Name Permission -->
             <div>
@@ -12,23 +12,26 @@
             </div>
             <div>
                 <x-input-label for="category_id" :value="__('Danh Mục')" />
-                <select id="category_id" name="category_id" class="block mt-1 w-full" required autofocus style='background:black'>
+                <select id="category_id" name="category_id" class="block mt-1 w-full" required autofocus
+                    style='background:black'>
                     <option value="#">---Chọn Danh mục---</option>
-                    @foreach ($category as $key =>$cate)
+                    @foreach ($category as $key => $cate)
                         <option value="{{ $key }}">{{ $cate }}</option>
                     @endforeach
                 </select>
+
                 <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
             </div>
-            {{-- <div>
-                <x-input-label for="supliler_id" :value="__('Nhà Cung Câp')" />
-               <select id="category_id" name="category_id" class="block mt-1 w-full" required autofocus>
-                    @foreach ($suppliler as $key => $sup)
-                        <option value="{{ $sup->id }}">{{ $sup->name }}</option>
+            <div>
+                <x-input-label for="supplier_id" :value="__('Nhà Cung Câp')" />
+               <select id="supplier_id" name="supplier_id" class="block mt-1 w-full" required autofocus style ="background: black">
+                <option value="#">---Chọn Nhà Cung Cấp---</option>
+                    @foreach ($supplier as $key => $sup)
+                        <option value="{{ $key }}">{{ $sup }}</option>
                     @endforeach
                 </select>
-                <x-input-error :messages="$errors->get('status')" class="mt-2" />
-            </div> --}}
+                <x-input-error :messages="$errors->get('supplier_id')" class="mt-2" />
+            </div>
             <div>
                 <x-input-label for="image" :value="__('Hình Ảnh')" />
                 <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
@@ -62,7 +65,7 @@
             <x-primary-button class="mt-6">
                 {{ __('Thêm Sản Phẩm') }}
             </x-primary-button>
-    </div>
-    </form>
+
+        </form>
     </div>
 </x-app-layout>

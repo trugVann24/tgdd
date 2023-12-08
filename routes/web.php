@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SupplilerController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AgentStoreController;
@@ -44,7 +44,7 @@ require __DIR__.'/auth.php';
 
 //admin
     Route::resource('/category',CategoryController::class);
-    Route::resource('/suppliler',SupplilerController::class);
+    Route::resource('/supplier',SupplierController::class);
     Route::resource('/brand',BrandController::class);
     Route::resource('/product',ProductController::class);
     Route::resource('/agentstore',AgentStoreController::class);

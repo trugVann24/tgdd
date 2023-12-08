@@ -19,17 +19,22 @@
                     <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
                 </div>
                 <div>
-                    <x-input-label for="suppliler_id" :value="__('Nhà Cung Cấp')" />
-                    <x-text-input id="suppliler_id" class="block mt-1 w-full" type="text" name="suppliler_id"
-                        value="{{ old('suppliler_id', $product->suppliler_id) }}" required autofocus />
-                    <x-input-error :messages="$errors->get('suppliler_id')" class="mt-2" />
+                    <x-input-label for="supplier_id" :value="__('Nhà Cung Cấp')" />
+                    <x-text-input id="supplier_id" class="block mt-1 w-full" type="text" name="supplier_id"
+                        value="{{ old('supplier_id', $product->supplier_id) }}" required autofocus />
+                    <x-input-error :messages="$errors->get('supplier_id')" class="mt-2" />
                 </div>
                 <div>
                     <x-input-label for="image" :value="__('Hình Ảnh')" />
-                    <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"
-                        value="{{ old('image', $product->image) }}" required autofocus />
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    @if ($product->image)
+                        <img src="{{ asset('uploads/image/' . $product->image) }}" alt="{{ $product->name }}"
+                            class="mt-2">
+                    @endif
+                    <input id="image" class="block mt-1 w-full" type="file" name="image" />
+                    <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
+
+
                 <div>
                     <x-input-label for="quantity_instock" :value="__('Số Lượng Tồn Kho')" />
                     <x-text-input id="quantity_instock" class="block mt-1 w-full" type="text" name="quantity_instock"
