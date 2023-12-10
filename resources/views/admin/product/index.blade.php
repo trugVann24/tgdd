@@ -3,12 +3,12 @@
         <div>
             {{ __('Danh sách Sản Phẩm') }}
         </div>
-        <div style="color: black">
+        {{-- <div style="color: black">
             <form action="{{ route('product.index') }}" method="GET">
                 <input type="text" name="q" placeholder="Search..." autocomplete="off">
                 <button type="submit">Tìm kiếm</button>
             </form>
-        </div>
+        </div> --}}
         <div>
             <a href="{{ route('product.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Sản Phẩm</a>

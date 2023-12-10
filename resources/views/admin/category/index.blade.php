@@ -3,12 +3,12 @@
         <div>
             {{ __('Danh sách Category') }}
         </div>
-        <div style="color: black">
+        {{-- <div style="color: black">
             <form action="{{ route('category.index') }}" method="GET">
                 <input type="text" name="q" placeholder="Search..." autocomplete="off">
                 <button type="submit">Tìm kiếm</button>
             </form>
-        </div>
+        </div> --}}
         <div>
             <a href="{{ route('category.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Danh Mục</a>

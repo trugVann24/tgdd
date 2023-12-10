@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AgentStoreController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplilerController;
 use App\Models\AgentStore;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/suppliler',SupplilerController::class);
     Route::resource('/brand',BrandController::class);
     Route::resource('/product',ProductController::class);
-    Route::resource('/agentstore',AgentStore::class);
+    Route::resource('/agentstore',AgentStoreController::class);
 });
 
 require __DIR__.'/auth.php';
