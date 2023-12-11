@@ -1,25 +1,17 @@
 <x-app-layout>
     <div class="flex items-center justify-between border-b border-gray-700 pb-3">
         <div>
-            {{ __('Danh sách Đại Lý') }}
+            {{ __('Danh sách Nhà cung cấp') }}
         </div>
-<<<<<<< HEAD
-        <div style="color: black">
-=======
         {{-- <div style="color: black">
->>>>>>> 8033170498f0a1addd585841d194691c30656de2
-            <form action="{{ route('agentstore.index') }}" method="GET">
+            <form action="{{ route('suppliler.index') }}" method="GET">
                 <input type="text" name="q" placeholder="Search..." autocomplete="off">
                 <button type="submit">Tìm kiếm</button>
             </form>
-<<<<<<< HEAD
-        </div>
-=======
         </div> --}}
->>>>>>> 8033170498f0a1addd585841d194691c30656de2
         <div>
-            <a href="{{ route('agentstore.create') }}"
-                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Đại Lý</a>
+            <a href="{{ route('suppliler.create') }}"
+                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Nhà Cung Cấp</a>
         </div>
     </div>
     <div class="flex flex-col mt-2">
@@ -32,45 +24,43 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">ID</th>
                                 <th scope="col"
-<<<<<<< HEAD
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên
-=======
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Địa chỉ
->>>>>>> 8033170498f0a1addd585841d194691c30656de2
-                                    Đại Lý
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên Nhà Cung Cấp
                                 </th>
-                                {{-- <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Trạng
-                                    Thái
-                                </th> --}}
                                 <th scope="col"
-                                    class="px-6 py-3 text-end text-xs font-inter-500 text-gray-500 uppercase">Thao tác
+                                    class="px-6 py-4 text-start text-xs font-inter-500 text-gray-500 uppercase">Email
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-4 text-end text-xs font-inter-500 text-gray-500 uppercase">Số điện thoại
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-4 text-end text-xs font-inter-500 text-gray-500 uppercase">Địa chỉ
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($list as $key => $agt)
+                            @foreach ($list as $key => $supp)
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $agt->id }}</td>
+                                        {{ $supp->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $agt->address }}</td>
-                                    {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        @if ($agt->status == 1)
-                                            Hiển Thị
-                                        @else
-                                            Không Hiển Thị
-                                        @endif
-                                    </td> --}}
+                                        {{ $supp->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $supp->email }}</td>
+                                    <td class="px-6 py-4 text-end text-xm text-gray-800 dark:text-gray-200">
+                                        {{ $supp->phone }}</td>
+                                    <td class="px-6 py-4 text-end text-xm text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $supp->address }}</td>
+
+
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('agentstore.edit', $agt->id) }}" class="">
+                                            <a href="{{ route('suppliler.edit', $supp->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('agentstore.destroy', $agt->id) }}" method="POST"
+                                        <form action="{{ route('suppliler.destroy', $supp->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')

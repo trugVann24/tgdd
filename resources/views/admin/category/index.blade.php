@@ -1,14 +1,24 @@
 <x-app-layout>
     <div class="flex items-center justify-between border-b border-gray-700 pb-3">
         <div>
+<<<<<<< HEAD
             {{ __('Danh sách Danh Mục') }}
         </div>
         <div style="color: black">
+=======
+            {{ __('Danh sách Category') }}
+        </div>
+        {{-- <div style="color: black">
+>>>>>>> 8033170498f0a1addd585841d194691c30656de2
             <form action="{{ route('category.index') }}" method="GET">
                 <input type="text" name="q" placeholder="Search..." autocomplete="off">
                 <button type="submit">Tìm kiếm</button>
             </form>
+<<<<<<< HEAD
         </div>
+=======
+        </div> --}}
+>>>>>>> 8033170498f0a1addd585841d194691c30656de2
         <div>
             <a href="{{ route('category.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Danh Mục</a>
@@ -28,10 +38,13 @@
                                     Danh Mục
                                 </th>
                                 <th scope="col"
+<<<<<<< HEAD
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tổng Sản
                                     Phẩm
                                 </th>
                                 <th scope="col"
+=======
+>>>>>>> 8033170498f0a1addd585841d194691c30656de2
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Trạng
                                     Thái
                                 </th>
@@ -49,8 +62,11 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{ $cate->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+<<<<<<< HEAD
                                         {{ $cate->products->count() }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+=======
+>>>>>>> 8033170498f0a1addd585841d194691c30656de2
                                         @if ($cate->status == 1)
                                             Hiển Thị
                                         @else
