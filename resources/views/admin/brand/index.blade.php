@@ -2,7 +2,7 @@
 
     <div class="flex items-center justify-between border-b border-gray-700 pb-3">
         <div class="">
-            {{__('Danh sách thương')}}
+            {{__('Danh sách thương hiệu')}}
         </div>
         <div class="flex items-center">
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">

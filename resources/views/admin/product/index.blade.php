@@ -3,18 +3,9 @@
         <div>
             {{ __('Danh sách Sản Phẩm') }}
         </div>
-<<<<<<< HEAD
         <div class="flex items-center">
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
-=======
-        {{-- <div style="color: black">
-            <form action="{{ route('product.index') }}" method="GET">
-                <input type="text" name="q" placeholder="Search..." autocomplete="off">
-                <button type="submit">Tìm kiếm</button>
-            </form>
-        </div> --}}
->>>>>>> 8033170498f0a1addd585841d194691c30656de2
         <div>
             <a href="{{ route('product.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Sản Phẩm</a>
@@ -107,8 +98,4 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <script src="/js/app.js"></script>
-=======
->>>>>>> 8033170498f0a1addd585841d194691c30656de2
 </x-app-layout>

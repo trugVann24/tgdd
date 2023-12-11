@@ -3,12 +3,9 @@
         <div>
             {{ __('Danh sách Nhà cung cấp') }}
         </div>
-        {{-- <div style="color: black">
-            <form action="{{ route('suppliler.index') }}" method="GET">
-                <input type="text" name="q" placeholder="Search..." autocomplete="off">
-                <button type="submit">Tìm kiếm</button>
-            </form>
-        </div> --}}
+        <div class="flex items-center">
+            <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
+        </div>
         <div>
             <a href="{{ route('suppliler.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Nhà Cung Cấp</a>

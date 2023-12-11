@@ -1,7 +1,7 @@
 <x-app-layout>
     {{ __('Sửa Category') }}
     <div class="dark:bg-gray-900 p-4 rounded-md mt-2">
-        <div class="w-80 mx-auto p-5 rounded-md">
+        <div class="w-full mx-auto p-5 rounded-md">
             <form method="POST" action="{{ route('suppliler.update', $suppliler->id) }}">
                 @method('PUT')
                 @csrf
