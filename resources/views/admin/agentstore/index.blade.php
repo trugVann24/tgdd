@@ -3,11 +3,8 @@
         <div>
             {{ __('Danh sách Đại Lý') }}
         </div>
-        <div style="color: black">
-            <form action="{{ route('agentstore.index') }}" method="GET">
-                <input type="text" name="q" placeholder="Search..." autocomplete="off">
-                <button type="submit">Tìm kiếm</button>
-            </form>
+        <div class="flex items-center">
+            <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
         <div>
             <a href="{{ route('agentstore.create') }}"
@@ -24,7 +21,7 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">ID</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Địa chỉ
                                     Đại Lý
                                 </th>
                                 {{-- <th scope="col"

@@ -3,11 +3,8 @@
         <div>
             {{ __('Danh sách Sản Phẩm') }}
         </div>
-        <div style="color: black">
-            <form action="{{ route('product.index') }}" method="GET">
-                <input type="text" name="q" placeholder="Search..." autocomplete="off">
-                <button type="submit">Tìm kiếm</button>
-            </form>
+        <div class="flex items-center">
+            <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
         <div>
             <a href="{{ route('product.create') }}"
