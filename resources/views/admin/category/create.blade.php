@@ -12,9 +12,12 @@
             </div>
             <div>
                 <x-input-label for="status" :value="__('Trạng Thái')" />
-                <select id="status" name="status" class="block mt-1 w-full" required autofocus style = "background: black">
-                    <option style = "background: black" class="" value="display" {{ old('status') === 'display' ? 'selected' : '' }}>Hiển thị</option>
-                    <option style = "background: black" class="" value="hide" {{ old('status') === 'hide' ? 'selected' : '' }}>Không hiển thị</option>
+                <select id="status" name="status" class="block mt-1 w-full" required autofocus
+                    style = "background: black">
+                    <option style = "background: black" class="" value="display"
+                        {{ old('status') === 'display' ? 'selected' : '' }}>Hiển thị</option>
+                    <option style = "background: black" class="" value="hide"
+                        {{ old('status') === 'hide' ? 'selected' : '' }}>Không hiển thị</option>
                 </select>
                 <x-input-error :messages="$errors->get('status')" class="mt-2" />
             </div>

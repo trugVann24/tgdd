@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Staff;
+
 
 class StaffController extends Controller
 {
@@ -11,7 +13,8 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $list = Staff::orderBy('id','asc')->get();
+        return view('admin.staff.index',compact('list'));
     }
 
     /**

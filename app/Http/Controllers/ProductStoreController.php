@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ProductStore;
+
 
 class ProductStoreController extends Controller
 {
@@ -11,7 +13,8 @@ class ProductStoreController extends Controller
      */
     public function index()
     {
-        //
+        $list = ProductStore::orderBy('id','asc')->get();
+        return view('admin.productstore.index',compact('list'));
     }
 
     /**

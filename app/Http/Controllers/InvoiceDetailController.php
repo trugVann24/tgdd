@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\InvoiceDetail;
 
 class InvoiceDetailController extends Controller
 {
@@ -11,7 +12,8 @@ class InvoiceDetailController extends Controller
      */
     public function index()
     {
-        //
+        $list = InvoiceDetail::orderBy('id','asc')->get();
+        return view('admin.invoicedetail.index',compact('list'));
     }
 
     /**

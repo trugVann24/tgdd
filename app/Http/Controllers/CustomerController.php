@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Customer;
 class CustomerController extends Controller
 {
      /**
@@ -11,7 +11,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $list = Customer::orderBy('id','asc')->get();
+        return view('admin.customer.index',compact('list'));
     }
 
     /**
