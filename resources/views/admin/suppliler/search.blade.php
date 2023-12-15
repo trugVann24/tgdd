@@ -4,9 +4,14 @@
             {{ __('Danh sách Nhà cung cấp') }}
         </div>
         <div style="color: black">
-            <form action="{{ route('admin.search-suppliler') }}" method="GET">
+            {{-- <form action="{{ route('suppliler.search') }}" method="GET">
                 <input type="text" name="search" placeholder="Search..." autocomplete="off">
                 <button type="submit">Tìm kiếm</button>
+            </form> --}}
+            <form action="{{ route('admin.search-suppliler') }}" method="GET">
+                @csrf
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit">Tìm Kiếm</button>
             </form>
         </div>
         <div>
@@ -38,7 +43,10 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($list as $key => $supp)
+                            @if ($search_supp->isEmpty())
+                            <p style="color: rgb(246, 11, 11); text-decoration: none;">Không tìm thấy Nhà cung cấp.</p>
+                        @else
+                            @foreach ($search_supp as $key => $supp)
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
@@ -71,6 +79,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

@@ -76,6 +76,18 @@ class SupplilerController extends Controller
         return view('admin.suppliler.edit', compact('suppliler'));
     }
 
+    public function search_suppliler(Request $request)
+    {
+        $search = $request->input('search');
+
+        if ($search) {
+            $search_supp = Suppliler::where('name', 'LIKE', '%' . $search . '%')->get();
+            return view('admin.suppliler.search', compact('search_supp'));
+        } else {
+            return redirect()->route('admin.suppliler.search');
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      */

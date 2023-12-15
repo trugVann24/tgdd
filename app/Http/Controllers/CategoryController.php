@@ -10,12 +10,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-
-    public function index(Request $request)
+    public function index()
     {
-      //  $query = $request->input('q');
-        $list = Category::orderBy('id','ASC')->paginate(15);
-
+        $list = Category::orderBy('id','ASC')->get();
         return view('admin.category.index', compact('list'));
     }
 
