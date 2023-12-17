@@ -1,22 +1,17 @@
 <x-app-layout>
     <div class="flex items-center justify-between border-b border-gray-700 pb-3">
         <div>
-            {{ __('Danh sách Nhà cung cấp') }}
+            {{ __('Danh sách Nhân viên') }}
         </div>
-        <div style="color: black">
-            {{-- <form action="{{ route('suppliler.search') }}" method="GET">
-                <input type="text" name="search" placeholder="Search..." autocomplete="off">
-                <button type="submit">Tìm kiếm</button>
-            </form> --}}
-            <form action="{{ route('admin.search-suppliler') }}" method="GET">
-                @csrf
-                <input type="text" name="search" placeholder="Search...">
-                <button type="submit">Tìm Kiếm</button>
+        <div style="color: black;">
+            <form action="{{ route('admin.search-staff') }}" method="GET">
+                <input type="text" name="search" placeholder="Search..." autocomplete="off" class="bg-gray-900 text-white p-2 rounded-md focus:outline-none focus:border-blue-500">
+                <button type="submit" class="bg-gray-900 text-white p-2 rounded-md">Tìm kiếm</button>
             </form>
         </div>
         <div>
-            <a href="{{ route('suppliler.create') }}"
-                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Nhà Cung Cấp</a>
+            <a href="{{ route('staff.create') }}"
+                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Nhân viên</a>
         </div>
     </div>
     <div class="flex flex-col mt-2">
@@ -29,7 +24,7 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">ID</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên Nhà Cung Cấp
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên Nhân viên
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-4 text-start text-xs font-inter-500 text-gray-500 uppercase">Email
@@ -43,32 +38,32 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @if ($search_supp->isEmpty())
-                            <p style="color: rgb(246, 11, 11); text-decoration: none;">Không tìm thấy Nhà cung cấp.</p>
+                            @if ($search_staff->isEmpty())
+                            <p style="color: rgb(246, 11, 11); text-decoration: none;">Không tìm thấy Nhân viên.</p>
                         @else
-                            @foreach ($search_supp as $key => $supp)
+                            @foreach ($search_staff as $key => $staf)
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $supp->id }}</td>
+                                        {{ $staf->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->name }}</td>
+                                        {{ $staf->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->email }}</td>
+                                        {{ $staf->email }}</td>
                                     <td class="px-6 py-4 text-end text-xm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->phone }}</td>
+                                        {{ $staf->phone }}</td>
                                     <td class="px-6 py-4 text-end text-xm text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->address }}</td>
+                                        {{ $staf->address }}</td>
                                         
                                     
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('suppliler.edit', $supp->id) }}" class="">
+                                            <a href="{{ route('staff.edit', $staf->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('suppliler.destroy', $supp->id) }}" method="POST"
+                                        <form action="{{ route('staff.destroy', $staf->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')

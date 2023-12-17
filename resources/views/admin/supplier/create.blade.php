@@ -1,7 +1,7 @@
 <x-app-layout>
     {{ __('Thêm Nhà cung cấp') }}
     <div class="w-80 mx-auto p-5 rounded-md border dark:border-gray-700">
-        <form method="POST" action="{{ route('suppliler.store') }}">
+        <form method="POST" action="{{ route('supplier.store') }}">
             @csrf
 
             <div>

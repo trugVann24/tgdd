@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Suppliler;
+use App\Models\Bill;
 
-class SupplilerController extends Controller
+class BillController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $list = Suppliler::orderBy('id','ASC')->get();
-        return view('admin.suppliler.index', compact('list'));
+        $list = Bill::orderBy('id','asc')->get();
+        return view('admin.bill.index',compact('list'));
     }
 
     /**

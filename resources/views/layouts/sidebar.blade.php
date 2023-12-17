@@ -38,26 +38,40 @@
                         </div>
                         <!-- Sub Menu Sidebar -->
                         <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
-                            {{-- <li
+                            <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('customer.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-group mr-2'></i>
-                                    Quản lý đơn hàng
+                                    Quản lý khách hàng
                                 </a>
                             </li>
                             <li class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 ">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('staff.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-cycling mr-2'></i>
-                                    Quản lý vận chuyển
+                                    Quản lý nhân viên
                                 </a>
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('productstore.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-mail-send mr-2'></i>
-                                    Thống kê thông tin
+                                    Quản lý ProductStore
                                 </a>
-                            </li> --}}
+                            </li>
+                            <li
+                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="{{ route('bill.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-mail-send mr-2'></i>
+                                    Quản lý hoá đơn
+                                </a>
+                            </li>
+                            <li
+                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="{{ route('invoicedetail.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-mail-send mr-2'></i>
+                                    Chi tiết hoá đơn
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -77,7 +91,7 @@
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('suppliler.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('supplier.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-shopping-bag mr-2'></i>
                                     Quản lý nhà cung cấp
                                 </a>
@@ -112,7 +126,7 @@
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('product.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-train mr-2'></i>
                                     Quản lý sản phẩm
                                 </a>

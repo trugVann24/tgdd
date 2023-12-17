@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class InvoiceDetail extends Model
 {
     use HasFactory;
     protected $fillable= [
-        'name', 'status'
+         'productStore_id','customer_id','price','quantity','discount','total_money',    
     ];
-    public function products()
-    {
-        return $this->hasMany(Product::class,'category_id','id');
-    }
 }

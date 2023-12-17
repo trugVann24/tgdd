@@ -1,18 +1,12 @@
 <x-app-layout>
-    @if(session('alert_message'))
-    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
-        <p class="font-bold">Cảnh báo!</p>
-        <p>{{ session('alert_message') }}</p>
-    </div>
-@endif
     <div class="flex items-center justify-between border-b border-gray-700 pb-3">
         <div>
             {{ __('Danh sách Danh Mục') }}
         </div>
-        <div style="color: black;">
-            <form action="{{ route('admin.search-category') }}" method="GET">
-                <input type="text" name="search" placeholder="Search..." autocomplete="off" class="bg-gray-900 text-white p-2 rounded-md focus:outline-none focus:border-blue-500">
-                <button type="submit" class="bg-gray-900 text-white p-2 rounded-md">Tìm kiếm</button>
+        <div style="color: black">
+            <form action="{{ route('category.index') }}" method="GET">
+                <input type="text" name="q" placeholder="Search..." autocomplete="off">
+                <button type="submit">Tìm kiếm</button>
             </form>
         </div>
         <div>

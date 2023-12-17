@@ -2,7 +2,7 @@
     {{ __('Sửa Category') }}
     <div class="dark:bg-gray-900 p-4 rounded-md mt-2">
         <div class="w-80 mx-auto p-5 rounded-md">
-            <form method="POST" action="{{ route('suppliler.update', $suppliler->id) }}">
+            <form method="POST" action="{{ route('supplier.update', $suppliler->id) }}">
                 @method('PUT')
                 @csrf
                 <div>

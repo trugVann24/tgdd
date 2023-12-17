@@ -8,9 +8,12 @@ use App\Models\AgentStore;
 class AgentStoreController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $list = AgentStore::orderBy('id', 'ASC')->get();
+        $search = $request->input('q');
+        $list = AgentStore::when($search, function ($query) use ($search) {
+            return $query->where('address', 'like', '%' . $search . '%');
+        })->paginate(10);
         return view('admin.agentstore.index', compact('list'));
     }
 

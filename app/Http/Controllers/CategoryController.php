@@ -10,9 +10,12 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $list = Category::orderBy('id','ASC')->get();
+        $search = $request->input('q');
+        $list = Category::when($search, function ($query) use ($search) {
+            return $query->where('name', 'like', '%' . $search . '%');
+        })->paginate(10);
         return view('admin.category.index', compact('list'));
     }
 
@@ -25,6 +28,21 @@ class CategoryController extends Controller
         return view('admin.category.create', compact('list'));
     }
 
+    public function search_category(Request $request)
+    {
+        $search = $request->input('search');
+
+        if ($search) {
+            $search_cate = Category::where('name', 'LIKE', '%' . $search . '%')->get();
+            return view('admin.category.search', compact('search_cate'));
+        } else if ($search==""){
+            return redirect()->route('category.index')->with('alert_message', 'Vui lòng nhập từ khóa!');
+        }
+         else {
+            return redirect()->route('admin.category.search_cate');
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -32,19 +50,19 @@ class CategoryController extends Controller
     {
         $data = $request->validate(
             [
-                'name' =>'required|unique:categories|max:255',
-                'status' =>'required',
+                'name' => 'required|unique:categories|max:255',
+                'status' => 'required',
             ],
             [
-                'name.unique' =>'Tên danh mục đã có ,xin điền tên khác',
-                'name.required' =>'Vui lòng điền tên danh mục!',
-                'status.required' =>'Vui lòng chọn trạng thái danh mục!',
+                'name.unique' => 'Tên danh mục đã có ,xin điền tên khác',
+                'name.required' => 'Vui lòng điền tên danh mục!',
+                'status.required' => 'Vui lòng chọn trạng thái danh mục!',
             ]
         );
 
         $category = new Category();
-        $category->name =$data['name'];
-        $category->status =$data['status'] == 'display' ? 1 : 0;
+        $category->name = $data['name'];
+        $category->status = $data['status'] == 'display' ? 1 : 0;
         $category->save();
         return redirect()->route('category.index')->with('message', 'Thêm danh mục thành công');
     }
@@ -73,23 +91,22 @@ class CategoryController extends Controller
     {
         $data = $request->validate(
             [
-                'name' =>'required',
-                'status' =>'required',
+                'name' => 'required',
+                'status' => 'required',
             ],
             [
-                'name.required' =>'Vui lòng điền tên danh mục!',
-                'status.required' =>'Vui lòng chọn trạng thái danh mục!',
+                'name.required' => 'Vui lòng điền tên danh mục!',
+                'status.required' => 'Vui lòng chọn trạng thái danh mục!',
 
             ]
         );
 
         $data = $request->all();
         $category =  Category::find($id);
-        $category->name =$data['name'];
-        $category->status =$data['status']  == 'display' ? 1 : 0;
+        $category->name = $data['name'];
+        $category->status = $data['status']  == 'display' ? 1 : 0;
         $category->save();
         return redirect()->route('category.index')->with('message', 'sửa danh mục thành công');
-
     }
 
     public function destroy(string $id)
