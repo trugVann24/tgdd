@@ -18,17 +18,18 @@ return new class extends Migration
             $table->unsignedBigInteger('supplier_id');
             $table->foreign('supplier_id')->references('id')->on('supplilers')->onDelete('cascade');
             $table->string('name');
+            $table->double('import_price');
+            $table->double('sell_price');
             $table->integer('quantity_instock');
             $table->string('image');
             $table->text('description');
             $table->boolean('status')->default(true);
             $table->timestamps();
+           
         });
     }
 // mã danh mục, mã nhà cung cấp, tên, số lượng , giá, hình ảnh , mô tả, status
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('products');

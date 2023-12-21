@@ -33,7 +33,7 @@ class BrandController extends Controller
                 'description.string' => 'Mô tả phải là một chuỗi ký tự.',
             ]);
 
-            $imagePath = $request->file('image')->store('brand_images', 'public');
+            $imagePath = $request->file('image')->store('images', 'public');
 
             $validated['image'] = $imagePath;
             
@@ -52,26 +52,26 @@ class BrandController extends Controller
         public function update(Request $request, Brand $brand)
         {
             $validated = $request->validate([
-                'name' => ['required', 'string'],
-                'image' => ['image'], 
-                'description' => ['string'],
+                'name' => 'required', 'string',
+                'image' => 'image', 
+                'description' => 'string',
             ], [
                 'name.required' => 'Thương hiệu là bắt buộc.',
                 'name.string' => 'Thương hiệu phải là một chuỗi ký tự.',
                 'image.image' => 'Ảnh phải là một file hình ảnh.',
                 'description.string' => 'Mô tả phải là một chuỗi ký tự.',
             ]);
+            if ($request->hasFile('image')) {
+
+                $imagePath = $request->file('image')->store('images', 'public');
+                $brand->update(['image' => $imagePath]);
+            }
 
             $brand->update([
                 'name' => $validated['name'],
                 'description' => $validated['description'],
             ]);
 
-            if ($request->hasFile('image')) {
-
-                $imagePath = $request->file('image')->store('brand_images', 'public');
-                $brand->update(['image' => $imagePath]);
-            }
 
     return redirect()->route('admin.brand.index')->with('message', 'Sửa Thương hiệu thành công');
 }

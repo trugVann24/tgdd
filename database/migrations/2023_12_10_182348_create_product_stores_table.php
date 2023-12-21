@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedInteger('quantity');
             $table->text('description');
             $table->boolean('status');
+            $table->timestamps();
         });
     }
 

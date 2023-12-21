@@ -1,5 +1,5 @@
 <x-app-layout>
-    {{ __('Sửa Phiếu nhập') }}
+    {{ __('Sửa phiếu nhập') }}
     <div class="w-full mx-auto p-5 rounded-md border dark:border-gray-700">
         <form method="POST" action="{{ route('admin.goodReceivedNote.update', ['goodReceivedNote' => $goodReceivedNote->id]) }}" enctype="multipart/form-data">
             @csrf
@@ -19,10 +19,14 @@
                         </option>
                     @endforeach
                 </x-select> 
-            
-                <x-input-error :messages="$errors->get('agent_store_id')" class="mt-2" />
             </div>
             <div>
+                <x-input-label for="name" :value="__('Tên sản phẩm')" />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" 
+                value="{{ old('name', $goodReceivedNote->name) }}" required autofocus />    
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            </div>
+            {{-- <div>
                 <x-input-label for="product_id" :value="__('Sản phẩm')" />
             
                 @php
@@ -39,7 +43,7 @@
                 </x-select> 
             
                 <x-input-error :messages="$errors->get('product_id')" class="mt-2" />
-            </div>
+            </div> --}}
             <div>
                 <x-input-label for="user_id" :value="__('User')" />
             

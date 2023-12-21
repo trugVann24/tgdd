@@ -21,7 +21,7 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">ID</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên brand
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên thương hiệu
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Hình ảnh

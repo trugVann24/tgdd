@@ -18,4 +18,12 @@ class GoodDeliveryNote extends Model
         'price',
         'total_cost',
     ];
+    // public function product()
+    // {
+    //     return $this->belongsTo(Product::class);
+    // }
+    // public function goodDeliveryNotes()
+    // {
+    //     return $this->hasMany(GoodDeliveryNote::class);
+    // }
 }

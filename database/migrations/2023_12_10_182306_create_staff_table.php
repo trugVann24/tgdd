@@ -15,6 +15,7 @@ return new class extends Migration
             $table->date('day_in_work');
             $table->unsignedBigInteger('phone_number');
             $table->boolean('status');
+            $table->timestamps();
         });
     }
 

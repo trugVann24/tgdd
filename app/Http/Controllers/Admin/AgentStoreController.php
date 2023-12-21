@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\AgentStore;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 
 class AgentStoreController extends Controller
 {
@@ -15,68 +17,49 @@ class AgentStoreController extends Controller
     }
 
 
-    public function create()
-    {
-        $list = AgentStore::all();
-        return view('admin.agentstore.create', compact('list'));
+    public function create() : View {
+        return view('admin.agentstore.create');
     }
 
 
     public function store(Request $request)
     {
-        $data = $request->validate(
-            [
-                'address' => 'required',
-                
-            ],
-            [
-                'address.unique' => 'Tên đại lý đã có ,xin điền tên khác',
-                'address.required' => 'Vui lòng điền tên đại lý!',
-            ]
-        );
+        $validated = $request->validate([
+            'address' => ['required', 'string'],
+            'status' => ['required'],
+        ]);
+       
+    
+        AgentStore::create($validated);
 
-        $agentstore = new AgentStore();
-        $agentstore->address = $data['address'];
-        $agentstore->save();
-        return redirect()->route('agentstore.index')->with('message', 'Thêm đại lý thành công');
+        return to_route('admin.agentstore.index')->with('message', 'Thêm đại lí thành công');
     }
 
 
-    public function show(string $id)
-    {
-        //
-    }
+    public function edit(AgentStore $agentstore) : View {
 
-
-    public function edit(string $id)
-    {
-        $agentstore = AgentStore::find($id);
         return view('admin.agentstore.edit', compact('agentstore'));
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, AgentStore $agentstore)
     {
-        $data = $request->validate(
+        $validated = $request->validate(
             [
                 'address' => 'required',  
+                'status'=> 'required',
             ],
             [
-                'address.required' => 'Vui lòng điền tên danh mục!',
+                'address.required' => 'Vui lòng điền địa chỉ đại lí!',
             ]
         );
-
-        $data = $request->all();
-        $agentstore =  AgentStore::find($id);
-        $agentstore->address = $data['address'];
-        $agentstore->save();
-        return redirect()->route('admin.agentstore.index')->with('message', 'sửa danh mục thành công');
+        $agentstore->update($validated);
+        return redirect()->route('admin.agentstore.index')->with('message', 'Sửa địa chỉ đại lí thành công');
     }
 
 
-    public function destroy(string $id)
-    {
-        AgentStore::find($id)->delete();
-        return redirect()->route('admin.agentstore.index');
+    public function destroy(AgentStore $agentstore) {
+        $agentstore->delete();
+        return back()->with('message','Địa chỉ đại lí được xoá thành công');
     }
 }

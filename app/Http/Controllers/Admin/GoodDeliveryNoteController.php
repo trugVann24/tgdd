@@ -45,16 +45,21 @@ class GoodDeliveryNoteController extends Controller
                 'total_cost' => 'required|numeric',
             ]); 
 
+            // $product = Product::find($request->input('product_id'));
+            // $product->quantity_instock -= $request->input('quantity');
+            // $product->status = $request->input('quantity_instock') > 0 ? 1 : 0;
+            // $product->save();
+
             goodDeliveryNote::create($validated);
 
             return redirect()->route('admin.goodDeliveryNote.index')->with('message', 'Thêm phiếu nhập thành công');
         }
 
 
-    public function edit(goodDeliveryNote $goodDeliveryNote) : View {
+        public function edit(goodDeliveryNote $goodDeliveryNote) : View {
 
-        return view('admin.goodDeliveryNote.edit', compact('goodDeliveryNote'));
-    }
+            return view('admin.goodDeliveryNote.edit', compact('goodDeliveryNote'));
+        }
 
 
         public function update(Request $request, goodDeliveryNote $goodDeliveryNote)

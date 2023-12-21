@@ -7,7 +7,7 @@
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
         <div>
-            <a href="{{ route('suppliler.create') }}"
+            <a href="{{ route('admin.suppliler.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Nhà Cung Cấp</a>
         </div>
     </div>
@@ -27,37 +27,40 @@
                                     class="px-6 py-4 text-start text-xs font-inter-500 text-gray-500 uppercase">Email
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-4 text-end text-xs font-inter-500 text-gray-500 uppercase">Số điện thoại
+                                    class="px-6 py-4 text-start text-xs font-inter-500 text-gray-500 uppercase">Số điện thoại
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-4 text-end text-xs font-inter-500 text-gray-500 uppercase">Địa chỉ
+                                    class="px-6 py-4 text-start text-xs font-inter-500 text-gray-500 uppercase">Địa chỉ
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-4 text-end text-xs font-inter-500 text-gray-500 uppercase">Thao tác
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($list as $key => $supp)
+                            @foreach ($suppliler as $suppliler)
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $supp->id }}</td>
+                                        {{ $suppliler->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->name }}</td>
+                                        {{ $suppliler->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->email }}</td>
-                                    <td class="px-6 py-4 text-end text-xm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->phone }}</td>
-                                    <td class="px-6 py-4 text-end text-xm text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $supp->address }}</td>
+                                        {{ $suppliler->email }}</td>
+                                    <td class="px-6 py-4 text-start text-xm text-gray-800 dark:text-gray-200">
+                                        {{ $suppliler->phone }}</td>
+                                    <td class="px-6 py-4 text-start text-xm text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $suppliler->address }}</td>
 
 
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('suppliler.edit', $supp->id) }}" class="">
+                                            <a href="{{ route('admin.suppliler.edit', $suppliler->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('suppliler.destroy', $supp->id) }}" method="POST"
+                                        <form action="{{ route('admin.suppliler.destroy', $suppliler->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')
@@ -74,4 +77,5 @@
             </div>
         </div>
     </div>
+    <script src="/js/app.js"></script>
 </x-app-layout>

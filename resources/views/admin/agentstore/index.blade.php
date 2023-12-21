@@ -7,7 +7,7 @@
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
         <div>
-            <a href="{{ route('agentstore.create') }}"
+            <a href="{{ route('admin.agentstore.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Đại Lý</a>
         </div>
     </div>
@@ -24,38 +24,38 @@
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Địa chỉ
                                     Đại Lý
                                 </th>
-                                {{-- <th scope="col"
+                                <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Trạng
                                     Thái
-                                </th> --}}
+                                </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-end text-xs font-inter-500 text-gray-500 uppercase">Thao tác
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($list as $key => $agt)
+                            @foreach ($agentstore as $agentstore )
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $agt->id }}</td>
+                                        {{$agentstore->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $agt->address }}</td>
-                                    {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        @if ($agt->status == 1)
-                                            Hiển Thị
-                                        @else
-                                            Không Hiển Thị
-                                        @endif
-                                    </td> --}}
+                                        {{$agentstore->address }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                            @if($agentstore->status == 1)
+                                                Hoạt động
+                                            @else
+                                                Ngưng hoạt động
+                                            @endif
+                                        </td>                                        
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('agentstore.edit', $agt->id) }}" class="">
+                                            <a href="{{ route('admin.agentstore.edit',$agentstore->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('agentstore.destroy', $agt->id) }}" method="POST"
+                                        <form action="{{ route('admin.agentstore.destroy',$agentstore->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')
@@ -72,4 +72,5 @@
             </div>
         </div>
     </div>
+    <script src="/js/app.js"></script>
 </x-app-layout>

@@ -59,10 +59,7 @@
                                         {{ $suppliler ? $suppliler->name : '' }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        @php
-                                            $product = \App\Models\Product::find($goodReceivedNote->product_id);
-                                        @endphp
-                                        {{ $product ? $product->name : '' }}
+                                        {{$goodReceivedNote->name}}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
                                         @php

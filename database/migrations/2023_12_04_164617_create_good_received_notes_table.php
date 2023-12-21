@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('good_received_notes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('name');
             $table->unsignedBigInteger('supplier_id');
             $table->foreign('supplier_id')->references('id')->on('supplilers')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

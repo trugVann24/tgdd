@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('quantity');
             $table->string('discount');
             $table->double('total_money');
+            $table->timestamps();
         });
     }
 

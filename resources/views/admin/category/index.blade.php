@@ -7,7 +7,7 @@
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
         <div>
-            <a href="{{ route('category.create') }}"
+            <a href="{{ route('admin.category.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm Danh Mục</a>
         </div>
     </div>
@@ -25,37 +25,26 @@
                                     Danh Mục
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Trạng
-                                    Thái
-                                </th>
-                                <th scope="col"
                                     class="px-6 py-3 text-end text-xs font-inter-500 text-gray-500 uppercase">Thao tác
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($list as $key => $cate)
+                            @foreach ($category as $category )
                                 <tr class="">
                                     <td
                                         class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $cate->id }}</td>
+                                        {{ $category->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $cate->name }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        @if ($cate->status == 1)
-                                            Hiển Thị
-                                        @else
-                                            Không Hiển Thị
-                                        @endif
-                                    </td>
+                                        {{ $category->name }}</td>
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('category.edit', $cate->id) }}" class="">
+                                            <a href="{{ route('admin.category.edit', $category->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('category.destroy', $cate->id) }}" method="POST"
+                                        <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')
@@ -72,4 +61,5 @@
             </div>
         </div>
     </div>
+    <script src="/js/app.js"></script>
 </x-app-layout>

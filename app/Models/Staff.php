@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Staff extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'staff_code';
+    public $incrementing = false;
     protected $fillable = [
         'staff_code',
         'name',
