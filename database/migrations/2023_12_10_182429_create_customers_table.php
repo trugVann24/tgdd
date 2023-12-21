@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('phone_number');
             $table->date('date_of_birth'); 
             $table->double('revenue'); 
+            $table->timestamps();
         });
     }
 

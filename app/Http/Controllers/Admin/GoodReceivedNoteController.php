@@ -18,30 +18,46 @@ class GoodReceivedNoteController extends Controller
         return view('admin.goodReceivedNote.index', compact('goodReceivedNote'));
     }
     public function create() : View {
-        $supplier_id = Suppliler::all();
-        $product_id = Product::all();
-        $user_id = User::all();
-        return view('admin.goodReceivedNote.create', [
-            'supplier_id' => $supplier_id,
-            'product_id' => $product_id,
-            'user_id' => $user_id,
+            $supplier_id = Suppliler::all();
+            $product_id = Product::all();
+            $user_id = User::all();
+            return view('admin.goodReceivedNote.create', [
+                'supplier_id' => $supplier_id,
+                'product_id' => $product_id,
+                'user_id' => $user_id,
 
-        ]);
-    }
-        public function store(Request $request)
+            ]);
+        }
+        public function store(Request $request, Product $product)
         {
             $validated = $request->validate([
                 'supplier_id' => '',
-                'product_id' => '',
+                'name' => '',
                 'user_id' => '',
-                'received_date' => 'required|date', 
-                'quantity' => 'required|numeric',
-                'price' => 'required|numeric',
-                'total_cost' => 'required|numeric',
+                'received_date' => 'date', 
+                'quantity' => 'numeric',
+                'price' => 'numeric',
+                'total_cost' => 'numeric',
             ]); 
-            GoodReceivedNote::create($validated);
 
-            return redirect()->route('admin.goodReceivedNote.index')->with('message', 'Thêm phiếu nhập thành công');
+            $productId = $request->input('name');
+           
+            $existingProduct = Product::find($productId);
+
+            if ($existingProduct) {
+                $product->quantity_instock += $request->input('quantity');
+                $product->save();
+                GoodReceivedNote::create($validated);
+
+            }else{
+                $product->name = $request->input('name');
+                $product->quantity_instock = $request->input('quantity');
+                $product->import_price = $request->input('price');
+                $product->save();
+                GoodReceivedNote::create($validated);
+            }
+
+             return redirect()->route('admin.goodReceivedNote.index')->with('message', 'Thêm phiếu nhập thành công');
         }
 
 
@@ -55,22 +71,22 @@ class GoodReceivedNoteController extends Controller
         {
             $validated = $request->validate([
                 'supplier_id' => '',
-                'product_id' => '',
+                'name' => '',
                 'user_id' => '',
-                'received_date' => 'required|date', 
-                'quantity' => 'required|numeric',
-                'price' => 'required|numeric',
-                'total_cost' => 'required|numeric',
+                'received_date' => 'date', 
+                'quantity' => 'numeric',
+                'price' => 'numeric',
+                'total_cost' => 'numeric',
             ]);
 
             $goodReceivedNote->update($validated);
            
-    return redirect()->route('admin.goodReceivedNote.index')->with('message', 'Sửa phiếu nhập thành công');
+        return redirect()->route('admin.goodReceivedNote.index')->with('message', 'Sửa phiếu nhập thành công');
 }
 
 
     public function destroy(GoodReceivedNote $goodReceivedNote) {
         $goodReceivedNote->delete();
-        return back()->with('message','Phiếu xuất được xoá thành công');
+        return back()->with('message','Phiếu nhập được xoá thành công');
     }
 }

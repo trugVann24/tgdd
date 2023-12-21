@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('cascade');
             $table->date('sale_date');
             $table->double('total_money');
+            $table->timestamps();
         });
     }
 

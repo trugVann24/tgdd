@@ -2,7 +2,7 @@
     {{ __('Sửa Category') }}
     <div class="dark:bg-gray-900 p-4 rounded-md mt-2">
         <div class="w-full mx-auto p-5 rounded-md">
-            <form method="POST" action="{{ route('suppliler.update', $suppliler->id) }}">
+            <form method="POST" action="{{ route('admin.suppliler.update', $suppliler->id) }}">
                 @method('PUT')
                 @csrf
                 <div>
@@ -20,7 +20,7 @@
                 </div>
 
                 <div>
-                    <x-input-label for="phone" :value="__('Phone')" />
+                    <x-input-label for="phone" :value="__('Số điện thoại')" />
                     <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"
                         value="{{ old('phone', $suppliler->phone) }}" required autofocus />
                     <x-input-error :messages="$errors->get('phone')" class="mt-2" />

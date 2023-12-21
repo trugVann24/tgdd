@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('agent_stores', function (Blueprint $table) {
             $table->id();
             $table->string('address');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

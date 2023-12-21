@@ -17,7 +17,7 @@
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>
             <div class="mt-4">
-                <x-input-label for="current_image" :value="__('Tên Ảnh Hiện Tại')" />
+                <x-input-label for="current_image" :value="__('Ảnh Hiện Tại')" />
                 <x-text-input id="current_image" class="block mt-1 w-full" type="text" name="current_image" value="{{ $brand->image }}" readonly />
             </div>
 

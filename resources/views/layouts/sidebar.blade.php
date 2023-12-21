@@ -1,8 +1,9 @@
 <section>
+    <script src="/js/app.js"></script>
     <div class=" flex relative">
         <!-- Menu Sidebar -->
         <section
-            class="w-64 fixed top-0 left-0 bottom-0 scrollbar-track-gray-900 scrollbar-thin scrollbar-thumb-gray-800"
+            class="w-64 fixed top-0 left-0 bottom-0 overflow-auto scrollbar-track-gray-900 scrollbar-thin scrollbar-thumb-gray-800"
             aria-label="Sidebar">
             <div class=" bg-white dark:bg-gray-800 border-r dark:border-gray-700 h-screen">
                 <div class="flex items-center justify-center px-2 py-[13px] ">
@@ -15,69 +16,86 @@
                 </div>
                 <ul class="">
                     <li>
-                        <a href=""
-                            class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100">
+                        <a href="#" class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100" onclick="HidenTrangchu('homeSubMenu')">
                             <i class="bx bx-home mr-2"></i>
                             Trang chủ
+                            <i class="bx bx-chevron-up ml-auto" id="iconTrangchu"></i>
                         </a>
                         <!-- Sub Menu Sidebar -->
-                        <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 group">
-                            <li class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 ">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                        <ul id="homeSubMenu" class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400  group">
+                            <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100">
+                                <a href="" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-group mr-2'></i>
                                     Thống kê
                                 </a>
                             </li>
                         </ul>
                     </li>
+
+                    <!-- bán hàng -->
                     <li>
-                        <div
-                            class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100">
+                        <div class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100" onclick="HidenBanhang('salesSubMenu')">
                             <i class='bx bx-purchase-tag-alt mr-2'></i>
                             Quản lý bán hàng
+                            <i class="bx bx-chevron-up ml-auto"  id="iconBanhang"></i>
                         </div>
                         <!-- Sub Menu Sidebar -->
-                        <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
-                            {{-- <li
-                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                        <ul id="salesSubMenu" class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
+                            <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="{{ route('admin.staff.index') }}" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-group mr-2'></i>
-                                    Quản lý đơn hàng
+                                    Quản lý nhân viên
                                 </a>
                             </li>
-                            <li class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 ">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
-                                    <i class='bx bx-cycling mr-2'></i>
-                                    Quản lý vận chuyển
+                    
+                            <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="{{route('admin.customer.index')}}" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-group mr-2'></i>
+                                    Quản lý khách hàng
                                 </a>
                             </li>
-                            <li
-                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
-                                    <i class='bx bx-mail-send mr-2'></i>
-                                    Thống kê thông tin
+                    
+                            <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="{{route('admin.bill.index')}}" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-group mr-2'></i>
+                                    Quản lý hóa đơn
                                 </a>
-                            </li> --}}
+                            </li>
+                    
+                            <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                <a href="{{route('admin.invoicedetail.index')}}" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-group mr-2'></i>
+                                    Chi tiết hóa đơn
+                                </a>
+                            </li>
+                    
+                            <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 group">
+                                <a href="{{route('admin.productstore.index')}}" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <i class='bx bx-group mr-2'></i>
+                                    Quản lý kho cửa hàng
+                                </a>
+                            </li>
                         </ul>
                     </li>
-                    <li>
-                        <div
-                            class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100">
-                            <i class='bx bx-cable-car mr-2'></i>
-                            Quản lý kho
-                        </div>
-                        <!-- Sub Menu Sidebar -->
-                        <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
+
+                    <!--kho -->
+                            <li>
+                                <div class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100" onclick="HidenKho('inventorySubMenu')">
+                                    <i class='bx bx-cable-car mr-2'></i>
+                                    Quản lý kho
+                                    <i class="bx bx-chevron-up ml-auto"  id="iconKho"></i>
+                                </div>
+                                <!-- Sub Menu Sidebar -->
+                                <ul id="inventorySubMenu" class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
+                                    <li class="dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
+                                        <a href="{{ route('admin.category.index') }}" class="px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                            <i class='bx bx-trending-up mr-2'></i>
+                                            Quản lý danh mục
+                                        </a>
+                                    </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('category.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
-                                    <i class='bx bx-trending-up mr-2'></i>
-                                    Quản lý danh mục
-                                </a>
-                            </li>
-                            <li
-                                class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('suppliler.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('admin.suppliler.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-shopping-bag mr-2'></i>
                                     Quản lý nhà cung cấp
                                 </a>
@@ -105,14 +123,14 @@
                             </li>
                             <li
                                 class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                <a href="{{ route('agentstore.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                <a href="{{ route('admin.agentstore.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                     <i class='bx bx-trending-up mr-2'></i>
                                     Quản lý đại lý phân phối
-                                </a>
+                                </a>    
                             </li>
                                 <li
                                     class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
-                                    <a href="{{ route('product.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
+                                    <a href="{{ route('admin.product.index') }}" class=" px-5 py-3 ml-4 flex items-center dark:group-hover:text-white">
                                         <i class='bx bx-train mr-2'></i>
                                         Quản lý sản phẩm
                                     </a>
@@ -129,12 +147,13 @@
                     @role('admin')
                         <li>
                             <div
-                                class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100">
+                                class="flex items-center text-sm px-2 py-3 text-gray-900 border-l-[4px] border-sky-700 bg-sky-50 dark:bg-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-950 group transition-colors ease-linear duration-100" onclick="HidenAdmin('adminSubMenu')">
                                 <i class='bx bx-check-shield mr-2'></i>
                                 Administrator
+                                <i class="bx bx-chevron-up ml-auto"  id="iconAdmin"></i>
                             </div>
                             <!-- Sub Menu Sidebar -->
-                            <ul class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
+                            <ul id="adminSubMenu" class="bg-white text-sm text-black dark:bg-gray-900/60 dark:text-gray-400 ">
                                 <li
                                     class=" dark:hover:bg-gray-950/80 transition-colors ease-linear duration-100 border-b dark:border-gray-700 group">
                                     <a href="{{ route('admin.permissions.index') }}"
