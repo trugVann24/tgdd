@@ -9,6 +9,7 @@ use App\Models\Suppliler;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class GoodReceivedNoteController extends Controller
 {

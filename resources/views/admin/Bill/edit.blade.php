@@ -8,13 +8,14 @@
                 <x-input-label for="bill_code" :value="__('Mã hóa đơn')" />
                 
                 <x-select id="bill_code" class="block mt-1 w-full text-black" name="bill_code" required disabled autofocus>
-                    <option value="" disabled selected>Mã Hóa đơn</option>
+                    <option value="" disabled>Mã Hóa đơn</option>
                     @foreach($invoicedetail as $invoicedetail)
                         <option value="{{ $invoicedetail->code_bill }}" {{ old('bill_code',$bill->bill_code) == $invoicedetail->code_bill ? 'selected' : '' }}>
                             {{ $invoicedetail->code_bill }}
                         </option>
                     @endforeach
                 </x-select>
+                <input type="hidden" name="bill_code" value="{{ old('bill_code', $bill->bill_code) }}">
             </div>
 
            
@@ -42,13 +43,14 @@
                         </option>
                     @endforeach
                 </x-select> 
+                <input type="hidden" name="customer_id" value="{{ old('customer_id', $bill->customer_id) }}">
             </div>
 
             <div class="mt-4">
                 <x-input-label for="sale_date" :value="__('Ngày mua')" />
                 <x-date id="sale_date" class="block mt-1 w-full text-black" name="sale_date"
-                value="{{old('sale_date',$bill->sale_date)}}" required autofocus />
-                <x-input-error :messages="$errors->get('sale_date')" class="mt-2" />
+                value="{{old('sale_date',now()->toDateString())}}" required autofocus />
+                <x-input-error :messages="$errors->get('sale_date',)" class="mt-2" />
             </div>
 
             <div>

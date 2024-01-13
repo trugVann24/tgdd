@@ -51,7 +51,7 @@
 
             <div class="mt-4">
                 <x-input-label for="discount" :value="__('Giảm Giá ($)')" />
-                <x-text-input id="discount" class="block mt-1 w-full" type="text" name="discount" :value="old('discount')" required autofocus   oninput="calculateTotalMoney()"/>
+                <x-text-input id="discount" class="block mt-1 w-full" type="text" name="discount" :value="old('discount',0)" oninput="calculateTotalMoney()"/>
             </div>
 
             <div class="mt-4">

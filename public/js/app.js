@@ -115,4 +115,9 @@
         }
 
    
-        
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#sale_date", {
+                dateFormat: "Y-m-d",
+                maxDate: "today",
+            });
+        });

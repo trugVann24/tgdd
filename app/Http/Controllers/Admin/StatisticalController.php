@@ -14,7 +14,7 @@ class StatisticalController extends Controller
 {
     public function index() : View  {
         $productCount = Product::count();
-        $TongDoanhSo =  InvoiceDetail::sum('total_money');
+        $TongDoanhSo =  Bill::sum('total_money');
         $TongVonDauTu =  GoodReceivedNote::sum('total_cost');
         $LoiNhuan = $TongDoanhSo - $TongVonDauTu;
         

@@ -49,16 +49,15 @@ class InvoiceDetailController extends Controller
         $product_id = $request->input('productStore_name');
         $quantity = $request->input('quantity');
         $productstore = ProductStore::where('productStore_id', $product_id)->first();
-       
-        Bill::create([
-            'bill_code'=>$code_bill,
-            'customer_id'=>$customer_id,
-            'total_money'=>$total_money
-        ]);
-
+    
         if ($productstore) {
             $productstore->quantity -= $quantity;
             $productstore->save();
+            Bill::create([
+                'bill_code'=>$code_bill,
+                'customer_id'=>$customer_id,
+                'total_money'=>$total_money
+            ]);
          }
         InvoiceDetail::create($validated);
         return redirect()->route('admin.invoicedetail.index')->with('message', 'Thêm thành công');
