@@ -58,25 +58,6 @@
             
                 <x-input-error :messages="$errors->get('user_id')" class="mt-2" />
             </div>
-            <div>
-                <x-input-label for="brand_id" :value="__('Thương hiệu')" />
-            
-                @php
-                    $brands = \App\Models\Brand::all();
-                @endphp
-            
-                <x-select id="brand_id" class="block mt-1 text-black w-full" name="brand_id" required readonly>
-                    <option value="" disabled>Select</option>
-                    @foreach($brands as $brand)
-                        <option value="{{ $brand->id }}" {{ old('brand_id', $goodDeliveryNote->brand_id) == $brand->id ? 'selected' : '' }}>
-                            {{ $brand->name }}
-                        </option>
-                    @endforeach
-                </x-select>
-            
-                <x-input-error :messages="$errors->get('brand_id')" class="mt-2" />
-            </div>
-            
             
 
             <div>

@@ -6,10 +6,10 @@
         <div class="flex items-center">
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
-        <div>
+        {{-- <div>
             <a href="{{ route('admin.bill.create') }}"
                 class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm hóa đơn</a>
-        </div>
+        </div> --}}
     </div>
     <div class="flex flex-col mt-2">
         <div class="-m-1.5 overflow-x-auto">

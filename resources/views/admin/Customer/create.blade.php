@@ -40,7 +40,7 @@
             <div class="mt-4">
                 <x-input-label for="revenue" :value="__('Doanh số ($)')" />
                 <x-text-input id="revenue" class="block mt-1 w-full" type="text" name="revenue" :value="old('revenue')"
-                    required autofocus />
+                    required autofocus readonly />
                 <x-input-error :messages="$errors->get('revenue')" class="mt-2" />
             </div>
 

@@ -4,7 +4,7 @@
         <form method="POST" action="{{ route('admin.goodDeliveryNote.store') }}" enctype="multipart/form-data">
             @csrf
             <div>
-                <x-input-label for="agent_store_id" :value="__('Dịa chỉ cửa hàng')" />
+                <x-input-label for="agent_store_id" :value="__('Địa chỉ cửa hàng')" />
                 <x-select id="agent_store_id" class="block mt-1 w-full text-black" name="agent_store_id" required autofocus>
                     <option value="" disabled selected>Chọn địa chỉ cửa hàng </option>
                     @foreach($agent_store_id as $agent_store)
@@ -17,7 +17,7 @@
                 </x-select>
                 <x-input-error :messages="$errors->get('đại lí')" class="mt-2" />
             </div>
-            <div>
+            <div class="mt-4">
                 <x-input-label for="product_id" :value="__('Sản phẩm')" />
                 <x-select id="product_id" class="block mt-1 w-full text-black" name="product_id" required autofocus onchange="updatePriceProduct()">
                     <option value="" disabled selected>Chọn sản phẩm</option>
@@ -31,7 +31,7 @@
                 </x-select>              
             </div>
 
-            <div>
+            <div class="mt-4">
                 <x-input-label for="user_id" :value="__('User')" />
             
                 <x-select id="user_id" class="block mt-1 w-full text-black" name="user_id" required autofocus>
@@ -45,22 +45,7 @@
             
                 <x-input-error :messages="$errors->get('user_id')" class="mt-2" />
             </div>
-            
-            <div>
-                <x-input-label for="brand_id" :value="__('Thương hiệu')" />
-                
-                <x-select id="brand_id" class="block mt-1 w-full text-black" name="brand_id" required autofocus>
-                    <option value="" disabled selected>Chọn thương hiệu </option>
-                    @foreach($brand_id as $brand_id)
-                        <option value="{{ $brand_id->id }}" {{ old('brand_id') == $brand_id->id ? 'selected' : '' }}>
-                            {{ $brand_id->name }}
-                        </option>
-                    @endforeach
-                </x-select>
-            
-                <x-input-error :messages="$errors->get('brand_id')" class="mt-2" />
-            </div>
-            <div>
+            <div class="mt-4">
                 <x-input-label for="delivery_date" :value="__('Ngày xuất')" />
             
                 <x-date id="delivery_date" class="block mt-1 w-full text-black" name="delivery_date" required autofocus />
@@ -68,12 +53,13 @@
                 <x-input-error :messages="$errors->get('delivery_date')" class="mt-2" />
             </div>
             
-            <div>
+            <div class="mt-4">
                 <x-input-label for="quantity" :value="__('Số lượng')" />
                 <x-text-input id="quantity" class="block mt-1 w-full" type="number" name="quantity" :value="old('quantity')" required autofocus oninput="calculateTotalCost()" />
                 <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
             </div>
-            <div>
+            
+            <div class="mt-4">
                 <x-input-label for="price" :value="__('Giá ($)')" />
                 <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')" required autofocus readonly oninput="calculateTotalCost()" />
                 <span id="display-price"></span>

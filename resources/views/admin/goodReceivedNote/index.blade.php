@@ -27,10 +27,10 @@
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Sản phẩm
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Người dùng
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">User
                                 </th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Ngày xuất
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Ngày nhập
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Số lượng

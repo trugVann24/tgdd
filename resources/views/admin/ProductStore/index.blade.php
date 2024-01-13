@@ -6,10 +6,6 @@
         <div class="flex items-center">
             <input type="text" id="search" placeholder="Tìm kiếm" class="px-3 py-2 text-black rounded-md border border-gray-300 focus:outline-none focus:border-indigo-700">
         </div>
-        <div>
-            <a href="{{ route('admin.productstore.create') }}"
-                class="bg-indigo-700 px-3 py-2 rounded-sm font-inter-500 text-sm hover:bg-indigo-800">Thêm sản phẩm</a>
-        </div>
     </div>
     <div class="flex flex-col mt-2">
         <div class="-m-1.5 overflow-x-auto">
@@ -19,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Mã sản phẩm</th>
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">ID</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tên sản phẩm</th>
                                 <th scope="col"
@@ -37,33 +33,37 @@
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                             @foreach ($productstore as $productstore )
-                                {{-- <tr class="">
-                                    <td
-                                        class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $staff->staff_code }}</td>
+                                <tr class="">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
+                                        {{ $productstore->id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
+                                        @php
+                                            $product = \App\Models\Product::find($productstore->productStore_id);
+                                        @endphp
+                                            {{ $product ? $product->name : '' }}
+                                </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $staff->name }}</td>
+                                        {{ $productstore->price }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $staff->address }}</td>
+                                        {{ $productstore->quantity }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $staff->day_in_work }}</td>
+                                        {{ $productstore->description }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $staff->phone_number }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        @if( $staff->status == 1 )
-                                            Còn làm
-                                        @else
-                                            Đã nghỉ làm
+                                        {{ $productstore->quantity> 0 ? 'Còn hàng' : 'Hết hàng' }}
+                                        @if($productstore->quantity == 0 )
+                                        @php
+                                            $productstore->update(['status' => 0]);
+                                        @endphp
                                         @endif
-                                    </td> --}}
+                               </td>
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('admin.staff.edit', $staff->staff_code) }}" class="">
+                                            <a href="{{ route('admin.productstore.edit', $productstore->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('admin.staff.destroy', $staff->staff_code) }}" method="POST"
+                                        <form action="{{ route('admin.productstore.destroy', $productstore->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')

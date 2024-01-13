@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ProductStoreController;
+use App\Http\Controllers\Admin\StatisticalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\SupplilerController;
 use App\Models\InvoiceDetail;
@@ -90,6 +91,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::put('/goodReceivedNote/update/{goodReceivedNote}', [GoodReceivedNoteController::class, 'update'])->name('goodReceivedNote.update');
     Route::delete('/goodReceivedNote/{goodReceivedNote}/destroy', [GoodReceivedNoteController::class, 'destroy'])->name('goodReceivedNote.destroy');
 
+    Route::get('/statistical', [StatisticalController::class, 'index'])->name('statistical.index');
+
     //Bán hàng - Nhân viên
     Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
     Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
@@ -112,7 +115,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::post('/productstore/store', [ProductStoreController::class, 'store'])->name('productstore.store');
     Route::get('/productstore/edit/{productstore}', [ProductStoreController::class, 'edit'])->name('productstore.edit');
     Route::put('/productstore/update/{productstore}', [ProductStoreController::class, 'update'])->name('productstore.update');
-    Route::delete('/productstore/{productstore_id}/destroy', [ProductStoreController::class, 'destroy'])->name('productstore.destroy');
+    Route::delete('/productstore/{productstore}/destroy', [ProductStoreController::class, 'destroy'])->name('productstore.destroy');
 
     //Bán hàng - hóa đơn
     Route::get('/bill', [BillController::class, 'index'])->name('bill.index');

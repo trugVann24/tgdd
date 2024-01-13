@@ -7,6 +7,7 @@ use App\Models\AgentStore;
 use App\Models\Brand;
 use App\Models\GoodDeliveryNote;
 use App\Models\Product;
+use App\Models\ProductStore;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -22,12 +23,10 @@ class GoodDeliveryNoteController extends Controller
         $agent_store_id = AgentStore::all();
         $product_id = Product::all();
         $user_id = User::all();
-        $brand_id = Brand::all();
         return view('admin.goodDeliveryNote.create', [
             'agent_store_id' => $agent_store_id,
             'product_id' => $product_id,
-            'user_id' => $user_id,
-            'brand_id' => $brand_id,
+            'user_id' => $user_id
         ]);
     }
 
@@ -38,17 +37,37 @@ class GoodDeliveryNoteController extends Controller
                 'agent_store_id' => '',
                 'product_id' => '',
                 'user_id' => '',
-                'brand_id' => '',
                 'delivery_date' => 'required|date', 
                 'quantity' => 'required|numeric',
                 'price' => 'required|numeric',
                 'total_cost' => 'required|numeric',
             ]); 
 
-            // $product = Product::find($request->input('product_id'));
-            // $product->quantity_instock -= $request->input('quantity');
-            // $product->status = $request->input('quantity_instock') > 0 ? 1 : 0;
-            // $product->save();
+            $product_id = $request->input('product_id');
+            $price = $request->input('price');
+            $quantity = $request->input('quantity');
+            $product = Product::where('id', $product_id)->first();
+            $productstore = ProductStore::where('productStore_id',$product_id)->first();
+            if ($product) {
+                $product->quantity_instock -= $quantity;
+                $product->save();
+             }else{
+                Product::create([
+                    'quantity_instock' => $quantity,
+                ]);
+             }
+             if($productstore){
+                $productstore->quantity += $quantity;
+                $productstore->save();
+
+             }else{
+                ProductStore::create([
+                    'productStore_id' =>  $product_id,
+                    'price' =>  $price,
+                    'quantity' => $quantity
+                    
+                ]);
+            }
 
             goodDeliveryNote::create($validated);
 
@@ -68,7 +87,6 @@ class GoodDeliveryNoteController extends Controller
                 'agent_store_id' => '',
                 'product_id' => '',
                 'user_id' => '',
-                'brand_id' => '',
                 'delivery_date' => 'required|date',
                 'quantity' => 'required|numeric',
                 'price' => 'required|numeric',
@@ -77,7 +95,7 @@ class GoodDeliveryNoteController extends Controller
 
             $goodDeliveryNote->update($validated);
            
-    return redirect()->route('admin.goodDeliveryNote.index')->with('message', 'Sửa phiếu xuất thành công');
+        return redirect()->route('admin.goodDeliveryNote.index')->with('message', 'Sửa phiếu xuất thành công');
 }
 
 

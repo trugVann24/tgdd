@@ -9,7 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bills', function (Blueprint $table) {
-            $table->string('bill_code')->primary();
+            $table->id();
+            $table->string('bill_code');
             $table->string('staff_code');
             $table->foreign('staff_code')->references('staff_code')->on('staff')->onDelete('cascade');
             $table->string('customer_id');

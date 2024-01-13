@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index() : View{
-        $customer = Customer::whereNotIn('customer_id',['admin'])->get();
+        $customer = Customer::whereNotIn('customer_id',['admin'])->with('bills') ->get();
             return view('admin.customer.index', compact('customer'));
     }
 
@@ -26,9 +26,10 @@ class CustomerController extends Controller
                 'address' => 'required',
                 'date_of_birth' => 'required',
                 'phone_number' => 'required|numeric',
-                'revenue' => 'required',
+                'revenue' => '',
             ]);
 
+            $revenue = $request->input('revenue');
             Customer::create($validated);
 
             return redirect()->route('admin.customer.index')->with('message', 'Thêm sản phẩm thành công');
@@ -46,7 +47,7 @@ class CustomerController extends Controller
                 'address' => 'required',
                 'date_of_birth' => 'required',
                 'phone_number' => 'required|numeric',
-                'revenue' => 'required',
+                'revenue' => '',
             ]);
 
             $customer->update($validated);

@@ -23,7 +23,7 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Mã hóa đơn</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Mã sản phẩm</th>
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Sản phẩm</th>
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Mã khách hàng</th>
                                 <th scope="col"
@@ -33,34 +33,43 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">giảm giá</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">giảm giá</th>
+                                    class="px-6 py-3 text-start text-xs font-inter-500 text-gray-500 uppercase">Tổng tiền</th>
                                 <th scope="col"
-                                    class="px-6 py-3 text-end text-xs font-inter-500 text-gray-500 uppercase">Tổng tiền</th>
+                                    class="px-6 py-3 text-end text-xs font-inter-500 text-gray-500 uppercase">Thao tác</th>    
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                             @foreach ($invoicedetail as $invoicedetail )
                                 <tr class="">
-                                    <td
-                                        class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
-                                        {{ $invoicedetail->invoicedetail_code }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
+                                        {{ $invoicedetail->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $invoicedetail->staff_code }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{ $invoicedetail->sale_date }}</td>
+                                        {{ $invoicedetail->code_bill }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-inter-500 text-gray-800 dark:text-gray-200">
+                                        @php
+                                            $product = \App\Models\Product::find($invoicedetail->productStore_name);
+                                        @endphp
+                                        {{ $product ? $product->name : '' }}
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{ $invoicedetail->customer_id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $invoicedetail->price }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $invoicedetail->quantity }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        {{ $invoicedetail->discount }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{$invoicedetail->total_money}} $
                                     </td> 
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div
                                             class="w-9 h-9 rounded-full hover:bg-gray-900 flex items-center justify-center">
-                                            <a href="{{ route('admin.invoicedetail.edit', $invoicedetail->invoicedetail_code) }}" class="">
+                                            <a href="{{ route('admin.invoicedetail.edit', $invoicedetail->id) }}" class="">
                                                 <i class='bx bx-edit text-lg'></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('admin.invoicedetail.destroy', $invoicedetail->invoicedetail_code) }}" method="POST"
+                                        <form action="{{ route('admin.invoicedetail.destroy', $invoicedetail->id) }}" method="POST"
                                             onsubmit="return confirm('Bạn có chắc chắn muốn xoá ?')">
                                             @csrf
                                             @method('DELETE')

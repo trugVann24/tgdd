@@ -30,7 +30,7 @@
                 <x-select id="id" class="block mt-1 w-full text-black" name="name"  autofocus>
                     <option value="" disabled selected>sản phẩm</option>
                     @foreach($product_id as $product)
-                        <option value="{{ $product->id }}">
+                        <option value="{{ $product->name }}">
                             {{ $product->name }}
                         </option>
                     @endforeach

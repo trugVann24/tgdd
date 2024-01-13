@@ -27,22 +27,10 @@ class SupplilerController extends Controller
     {
         $validated = $request->validate(
             [
-                'name' =>'required|unique:categories',
-                'email'=> 'required|email',
-                'phone'=> 'required|numeric',
+                'name' =>'required',
+                'email'=> 'required',
+                'phone'=> 'required',
                 'address'=> 'required',
-            ],
-            [
-                'name.unique' =>'Tên danh mục đã có ,xin điền tên khác',
-                'name.required' =>'Vui lòng điền tên danh mục!',
-                'email.unique' =>'email đã có ,xin điền emailkhác',
-                'email.required' =>'Vui lòng điền email!',
-                'email.email'=> 'Nhập đúng định dạng email',
-                'phone.unique' =>'Số điện thoại đã có ,xin điền Số điện thoại khác',
-                'phone.required' =>'Vui lòng điền Số điện thoại danh mục!',
-                'phone.numeric'=> 'Số điện thoại phải là số',
-                'address.unique' =>'Địa chỉ đã có ,xin điền Địa chỉ khác',
-                'address.required' =>'Vui lòng điền Địa chỉ danh mục!',
             ]
         );
          Suppliler::create($validated);

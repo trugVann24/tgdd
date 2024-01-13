@@ -5,11 +5,16 @@
             @csrf
             @method('PUT')
             <div>
-                <x-input-label for="bill_code" :value="__('Mã hoá đơn')" />
-                <x-text-input id="bill_code" class="block mt-1 w-full" type="text" name="bill_code" 
-                value="{{old('bill_code',$bill->bill_code)}}"
-                    required readonly autofocus />
-                <x-input-error :messages="$errors->get('bill_code')" class="mt-2" />
+                <x-input-label for="bill_code" :value="__('Mã hóa đơn')" />
+                
+                <x-select id="bill_code" class="block mt-1 w-full text-black" name="bill_code" required disabled autofocus>
+                    <option value="" disabled selected>Mã Hóa đơn</option>
+                    @foreach($invoicedetail as $invoicedetail)
+                        <option value="{{ $invoicedetail->code_bill }}" {{ old('bill_code',$bill->bill_code) == $invoicedetail->code_bill ? 'selected' : '' }}>
+                            {{ $invoicedetail->code_bill }}
+                        </option>
+                    @endforeach
+                </x-select>
             </div>
 
            
@@ -29,7 +34,7 @@
             <div>
                 <x-input-label for="customer_id" :value="__('Mã khách hàng')" />
                 
-                <x-select id="customer_id" class="block mt-1 text-black w-full" name="customer_id" required readonly>
+                <x-select id="customer_id" class="block mt-1 text-black w-full" name="customer_id" required disabled readonly>
                     <option value="" disabled>Select</option>
                     @foreach($customer as $customer)
                         <option value="{{ $customer->customer_id }}" {{ old('customer_id', $bill->customer_id) == $customer->customer_id ? 'selected' : '' }}>
@@ -50,7 +55,7 @@
                 <x-input-label for="total_money" :value="__('Tổng tiền ($)')" />
                 <x-text-input id="total_money" class="block mt-1 w-full" type="text" name="total_money" 
                 value="{{old('total_money', $bill->total_money)}}"
-                    required autofocus />
+                    required autofocus readonly />
                 <x-input-error :messages="$errors->get('total_money')" class="mt-2" />
             </div>
 

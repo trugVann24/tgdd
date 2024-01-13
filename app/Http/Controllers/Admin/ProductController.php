@@ -15,11 +15,9 @@ class ProductController extends Controller
         public function index() : View
         {
             $product = Product::whereNotIn('name', ['admin'])->get();
+            
             return view('admin.product.index', compact('product'));
-            foreach ($product as $product) {
-                $product->status = $product->quantity_instock > 0 ? 1 : 0;
-                $product->save();
-            }
+           
         }
         public function create() : View {
             $category_id = Category::all();
@@ -33,7 +31,6 @@ class ProductController extends Controller
             ]);
         }
 
-        //bỏ thêm sản phẩm , lấy tên, số lượng, giá nhập bên phiếu nhập
         
         public function store(Request $request)
         {
@@ -44,7 +41,7 @@ class ProductController extends Controller
                 'name' => '',
                 'import_price' => 'numeric',
                 'sell_price' => 'nullable|numeric',
-                'quantity_instock' => 'integer',
+                'quantity_instock' => '',
                 'description' => 'nullable|string',
                 'status' => 'nullable',
             ]);

@@ -75,9 +75,9 @@
                                         {{ $product->name }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{ $product->quantity_instock }}</td>
-                                    <td class="px-1 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" >
-                                    </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="min-width: 100px; min-height: 100px;">
+                                        </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{ $product->import_price }}$</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
@@ -85,10 +85,11 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{ $product->description }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        @if($product->status == 1 | $product->quantity_instock > 0)
-                                            Còn hàng
-                                        @else
-                                            Hết hàng
+                                        {{ $product->quantity_instock > 0 ? 'Còn hàng' : 'Hết hàng' }}
+                                        @if($product->quantity_instock == 0 )
+                                        @php
+                                            $product->update(['status' => 0]);
+                                        @endphp
                                         @endif
                                     </td>
 

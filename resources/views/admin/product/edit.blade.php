@@ -46,12 +46,12 @@
             <div class="mt-4">
                 <x-input-label for="quantity_instock" :value="__('Số lượng tồn kho')" />
                 <x-text-input id="quantity_instock" class="block mt-1 w-full" type="text" name="quantity_instock" 
-                value="{{old('quantity_instock', $product->quantity_instock)}}" required autofocus />
+                value="{{old('quantity_instock', $product->quantity_instock)}}" required autofocus readonly/>
                 <x-input-error :messages="$errors->get('quantity_instock')" class="mt-2" />
             </div> 
 
             <div class="mt-4">
-                <x-input-label for="image" :value="__('Ảnh Thương hiệu')" />
+                <x-input-label for="image" :value="__('Ảnh sản phẩm')" />
                 <input id="image" class="block mt-1 w-full" type="file" name="image" accept="image/*" />
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>

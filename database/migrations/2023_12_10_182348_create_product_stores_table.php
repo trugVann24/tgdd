@@ -9,18 +9,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_stores', function (Blueprint $table) {
-            $table->string('productStore_id')->primary();
-            $table->string('productStore_name');
+            $table->id();
+            $table->unsignedBigInteger('productStore_id');
+            $table->foreign('productStore_id')->references('id')->on('products')->onDelete('cascade');
             $table->double('price');
             $table->unsignedInteger('quantity');
-            $table->text('description');
-            $table->boolean('status');
+            $table->text('description')->nullable;
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('product_stores');
     }
 };

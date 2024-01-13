@@ -50,7 +50,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
                                         {{ $customer->phone_number }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                        {{$customer->revenue}} $
+                                        {{$customer->bills->sum('total_money')}} $
                                     </td>
                                     <td class="px-6 py-4 flex items-center justify-end font-inter-500 ">
                                         <div

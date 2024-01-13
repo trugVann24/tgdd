@@ -25,9 +25,8 @@ class ProductStoreController extends Controller
     public function store(Request $request) {
         $validate = $request->validate([
             "productStore_id"=> "required",
-            "productStore_name"=> "required",
             "price"=> "required",
-            "quantity"=> "required",
+            "quantity"=> "",
             "description"=> "",
             "status"=> "",
         ]);
@@ -41,6 +40,34 @@ class ProductStoreController extends Controller
         return redirect()->route("admin.productstore.index")->with("message","Thêm sản phẩm thành công");
     }
 
+    public function edit(ProductStore $productstore) : View {
+        $product = Product::all();
+        return view('admin.productstore.edit',[
+            'product' => $product
+        ], compact('productstore'));
+    }
+
+    public function update(Request $request, ProductStore $productstore)
+    {
+        $validated = $request->validate(
+            [
+                "productStore_id"=> "",
+                "price"=> "",
+                "quantity"=> "",
+                "description"=> "",
+                "status"=> "",
+            ]
+        );
+
+        $productstore->update($validated);
+        return redirect()->route('admin.productstore.index')->with('message', 'sửa sản phẩm thành công');
+
+    }
+
+    public function destroy(ProductStore $productstore) {
+        $productstore->delete();
+        return back()->with('message','Sản phẩm được xoá thành công');
+    }
 
 
 }

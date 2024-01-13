@@ -4,10 +4,16 @@
         <form method="POST" action="{{ route('admin.bill.store') }}">
             @csrf
             <div>
-                <x-input-label for="bill_code" :value="__('Mã hoá đơn')" />
-                <x-text-input id="bill_code" class="block mt-1 w-full" type="text" name="bill_code" :value="old('bill_code')"
-                    required autofocus />
-                <x-input-error :messages="$errors->get('bill_code')" class="mt-2" />
+                <x-input-label for="bill_code" :value="__('Mã hóa đơn')" />
+                
+                <x-select id="bill_code" class="block mt-1 w-full text-black" name="bill_code" onchange="updatePriceBill()" required autofocus>
+                    <option value="" disabled selected>Mã Hóa đơn</option>
+                    @foreach($invoicedetail as $invoicedetail)
+                        <option value="{{ $invoicedetail->code_bill }}" data-total-money="{{ $invoicedetail->total_money }}" {{ old('bill_code') == $invoicedetail->code_bill ? 'selected' : '' }}>
+                            {{ $invoicedetail->code_bill }}
+                        </option>
+                    @endforeach
+                </x-select>
             </div>
 
            

@@ -17,8 +17,5 @@ class GoodReceivedNote extends Model
         'price',
         'total_cost',
     ];
-//     public function product()
-// {
-//     return $this->belongsTo(Product::class);
-// }
+
 }

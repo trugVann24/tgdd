@@ -39,24 +39,24 @@ class GoodReceivedNoteController extends Controller
                 'price' => 'numeric',
                 'total_cost' => 'numeric',
             ]); 
-
-            $productId = $request->input('name');
-           
-            $existingProduct = Product::find($productId);
-
-            if ($existingProduct) {
-                $product->quantity_instock += $request->input('quantity');
+            $supplier_id = $request->input('supplier_id');
+            $productName = $request->input('name');
+            $quantity = $request->input('quantity');
+            $import_price = $request->input('price');
+            $product = Product::where('name', $productName)->first();
+             if ($product) {
+                $product->quantity_instock += $quantity;
+                $product->import_price = $import_price;
                 $product->save();
-                GoodReceivedNote::create($validated);
-
-            }else{
-                $product->name = $request->input('name');
-                $product->quantity_instock = $request->input('quantity');
-                $product->import_price = $request->input('price');
-                $product->save();
-                GoodReceivedNote::create($validated);
-            }
-
+             }else{
+                Product::create([
+                    'name' => $productName,
+                    'quantity_instock' => $quantity,
+                    'import_price' => $import_price,
+                    'supplier_id' => $supplier_id
+                ]);
+             }
+            GoodReceivedNote::create($validated);
              return redirect()->route('admin.goodReceivedNote.index')->with('message', 'Thêm phiếu nhập thành công');
         }
 

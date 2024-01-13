@@ -3,11 +3,16 @@
         var quantity = parseFloat(document.getElementById('quantity').value) || 0;
         var price = parseFloat(document.getElementById('price').value) || 0;
         var totalCost = quantity * price;
-        document.getElementById('total_cost').value = totalCost.toFixed(0); 
-
-
-        
+        document.getElementById('total_cost').value = totalCost.toFixed(0);  
     }
+    function calculateTotalMoney() {
+        var quantity = parseFloat(document.getElementById('quantity').value) || 0;
+        var price = parseFloat(document.getElementById('price').value) || 0;
+        var discount = parseFloat(document.getElementById('discount').value) || 0;
+        var totalCost = (quantity * price) - discount;
+        document.getElementById('total_money').value = totalCost.toFixed(0);  
+    }
+
 
     document.getElementById('search').addEventListener('input', function() {
         let filter = this.value.toLowerCase();
@@ -27,6 +32,11 @@
         var productId = document.getElementById('product_id').value;
         var sellPrice = document.querySelector('#product_id option[value="' + productId + '"]').getAttribute('data-sell-price');
         document.getElementById('price').value = sellPrice;
+    }
+    function updatePriceBill() {
+        var BillCode = document.getElementById('bill_code').value;
+        var TotalMoney = document.querySelector('#bill_code option[value="' + BillCode + '"]').getAttribute('data-total-money');
+        document.getElementById('total_money').value = TotalMoney;
     }
 
     function updatePriceProductStore() {
